@@ -1,21 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'katalonstudio/katalon'
+            args "-u root"
+        }
+    }
     stages {
-        stage('PowerShell') {
+        stage('Test') {
             steps {
-                dir('/CDesktop/projek/jenkin/ci-samples-master'){
-                    script {   
-                       sh 'docker run -t --rm -v "$(pwd):/tmp/source" -w /tmp/source katalonstudio/katalon katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apikey=d7261927-28cc-4591-a4ae-e526900d2974'
-                    }
-
-                }
+                sh 'katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
             }
         }
-
-
-
-
-
     }
 
 }

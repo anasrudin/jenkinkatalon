@@ -6,9 +6,9 @@ pipeline {
                 dir('/CDesktop/projek/jenkin/ci-samples-master'){
                     script {
                         echo "Start condition check"
-                        build job: 'printuser'
-                        def slaveJob = build job: 'printuser'
-                        println slaveJob.rawBuild.log  
+                        bat 'start cmd.exe /c C:\\CDesktop\\projek\\jenkin\\ci-samples-master\\hihi.bat'
+
+
                     }
 
                 }

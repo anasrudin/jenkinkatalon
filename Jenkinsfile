@@ -1,20 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Chrome') {
             steps {
                 dir('/CDesktop/projek/jenkin/ci-samples-master'){
-                    sh 'docker run -t --rm -v "$(pwd)":/tmp/project katalonstudio/katalon   -projectPath=/tmp/project -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apiKey=c3e6936c980be42d575a06963d977e15'
+                    cmd.exe /c '\run_chrome_1.bat'
                 }
             }
         }
-		stage('build') {
-            steps {
-                dir('/CDesktop/projek/jenkin/ci-samples-master'){
-                    sh 'docker run -t --rm -v "$(pwd)":/tmp/project katalonstudio/katalon katalonc.sh -projectPath=/tmp/project -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest" -apiKey=c3e6936c980be42d575a06963d977e15'
-                }
-            }
-        }
+
     }
 
 }

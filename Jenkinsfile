@@ -6,7 +6,7 @@ pipeline {
                 dir('/CDesktop/projek/jenkin/ci-samples-master'){
                     script {
                         echo "Start condition check"
-                        bat 'start cmd.exe /c C:\\CDesktop\\projek\\jenkin\\ci-samples-master\\hihi.bat'
+                        sh 'start cmd.exe /c C:\\CDesktop\\projek\\jenkin\\ci-samples-master\\hihi.bat'
 
 
                     }

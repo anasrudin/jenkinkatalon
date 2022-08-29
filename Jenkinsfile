@@ -1,6 +1,21 @@
 pipeline {
     agent any
     stages {
+        stage('PowerShell') {
+            steps {
+                dir('/CDesktop/projek/jenkin/ci-samples-master'){
+                    node {
+                        def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
+                        println msg
+                    }
+
+
+                }
+            }
+        }
+
+
+
         stage('Chrome') {
             steps {
                 dir('/CDesktop/projek/jenkin/ci-samples-master'){

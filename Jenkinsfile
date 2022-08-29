@@ -4,8 +4,12 @@ pipeline {
         stage('PowerShell') {
             steps {
                 dir('/CDesktop/projek/jenkin/ci-samples-master'){
-                    def msg = powershell(returnStdout: true, script: 'Write-Output "PowerShell is mighty!"')
-                    println msg
+                    script {
+                        echo "Start condition check"
+                        build job: 'printuser'
+                        def slaveJob = build job: 'printuser'
+                        println slaveJob.rawBuild.log  
+                    }
 
                 }
             }

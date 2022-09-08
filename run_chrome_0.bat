@@ -3,6 +3,8 @@
 
 @echo on
 
+
+
 set currentdir=%cd::\=/%
 set currentdir=%currentdir:\=/%
 
